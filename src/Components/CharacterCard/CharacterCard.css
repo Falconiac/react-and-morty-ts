@@ -5,10 +5,11 @@
     margin: 1rem 1rem;
     border-radius: 9px;
     box-shadow: 5px 5px 5px #00000052;
+    background-color: lightgray;
 
 }
 .character-card:hover{
-    background-color: #61dafb;
+    background-color: white;
 }
 
 h3 {

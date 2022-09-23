@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import CharacterGallery from "./Components/CharacterGallery/CharacterGallery";
+import axios from "axios";
+
+
 
 
 export default function App() {
-  const characters = [
+  /*const characters = [
     {
       "id": 1,
       "name": "Rick Sanchez",
@@ -1130,6 +1133,23 @@ export default function App() {
       "created": "2017-11-05T10:02:26.701Z"
     }
   ]
+*/
+
+  const url = "https://rickandmortyapi.com/api/character";
+
+  let [characters, setCharacters] = useState([]);
+
+  useEffect(()=>{
+    axios.get(url)
+        .then((response)=>{
+          return response.data
+        }).then((data)=>{
+      setCharacters(data.results)
+    })
+        .catch((error) =>{
+      console.log(error)
+    })
+  },[]);
 
   return (
       < CharacterGallery characters={characters}/>
